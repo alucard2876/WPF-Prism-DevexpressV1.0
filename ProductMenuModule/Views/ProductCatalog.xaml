@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ProductMenuModule.Views.ProductCatalog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProductMenuModule.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             dx:ThemeManager.ThemeName="Office2019Black"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             Height="450" Width="800">
+    <Grid  Width="800" Height="450" Background="#FF333333" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <dxnav:NavButton Grid.Column="0" Margin="5" Command="{Binding NavigateCommand}" Grid.Row="0" Content="Back" Padding="30 0" Background="#FF803131"></dxnav:NavButton>
+        <dxnav:NavButton Grid.Column="0" Grid.Row="1" Margin="5" Command="{Binding AddProductCommand}"  Content="Add new" Padding="15 0" Background="#FF803131"></dxnav:NavButton>
+        <dxg:GridControl Grid.Column="1"  Grid.RowSpan="3" AutoGenerateColumns="AddNew"  ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" SelectionMode="Row" >
+            
+            <dxg:GridControl.View>
+                <dxg:CardView>
+                    <dxg:CardView.CardTemplate>
+                        <DataTemplate>
+                            <Grid Width="300" Height="250">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                    <RowDefinition Height="45"></RowDefinition>
+                                    <RowDefinition Height="45"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Prodct title" Grid.Column="0" Grid.Row="0" FontSize="20"></TextBlock>
+                                <TextBlock Text="{Binding Row.Title}" Grid.Column="1" Grid.Row="0" FontSize="20"></TextBlock>
+                                <TextBlock Text="Product description" Grid.Column="0" Grid.Row="1"></TextBlock>
+                                <TextBlock Text="{Binding Row.Descripton}" Grid.Column="1" Grid.Row="1"></TextBlock>
+                                <TextBlock Text="Coast" Grid.Column="0" Grid.Row="2"></TextBlock>
+                                <TextBlock Text="{Binding Row.Coast}" Grid.Column="1" Grid.Row="2"></TextBlock>
+                                <TextBlock Text="Category" Grid.Column="0" Grid.Row="3"></TextBlock>
+                                <TextBlock Text="{Binding Row.Category.CategoryTitle}" Grid.Column="1" Grid.Row="3"></TextBlock>
+                                <dxnav:NavButton Margin="0 2" Grid.Row="4" Grid.ColumnSpan="2" Content="To product" HorizontalAlignment="Center" Background="#FF803232" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type dxg:CardView}},Path=DataContext.CurrentProductCommand}" CommandParameter="{Binding Row.Id}"></dxnav:NavButton>
+                                <dxnav:NavButton Grid.Row="5" Grid.ColumnSpan="2" Content="Delete" HorizontalAlignment="Center" Background="#FF803232" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type dxg:CardView}},Path=DataContext.DeleteCommand}" CommandParameter="{Binding Row.Id}"></dxnav:NavButton>
+                            </Grid>
+                        </DataTemplate>
+                    </dxg:CardView.CardTemplate>
+                </dxg:CardView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+       
+    </Grid>
+</UserControl>

@@ -1,0 +1,21 @@
+﻿<dx:ThemedWindow 
+    x:Class="DXApplication1.Views.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+    xmlns:ViewModels="clr-namespace:DXApplication1.ViewModels"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    dx:ThemeManager.ThemeName="Office2019Black"
+    mc:Ignorable="d" Height="450" Width="800" Background="#FF333333" BorderBrush="Transparent">
+
+    <Grid>
+        <ContentControl VerticalAlignment="Top" HorizontalAlignment="Left" prism:RegionManager.RegionName="ProductMenuModule">
+
+        </ContentControl>
+      
+    </Grid>
+</dx:ThemedWindow>
